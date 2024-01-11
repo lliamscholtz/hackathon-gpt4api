@@ -1,0 +1,19 @@
+{
+    "name": "hackathon-gpt4api",
+    "module": "index.ts",
+    "type": "module",
+    "devDependencies": {
+        "bun-types": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "openai": "^4.24.3"
+    },
+    "scripts": {
+        "compile": "bun build ./index.ts --compile --outfile build/gpt4api",
+        "build": "docker rmi -f gpt4-image; docker build -t gpt4-image .",
+        "start": "docker run --platform linux/amd64 --name gpt4-container --init --rm -p 8080:8080 gpt4-image"
+    }
+}
